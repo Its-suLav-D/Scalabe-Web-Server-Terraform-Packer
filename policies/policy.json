@@ -1,0 +1,15 @@
+{
+  "if": {
+    "allof": [
+      {
+        "field": "tags['udacityv1']",
+        "exists": "false"
+      }
+    ]
+  },
+  "then": {
+    "effect": "deny"
+  }
+}
+
+
