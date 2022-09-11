@@ -17,7 +17,7 @@ variable "username" {
 
 variable "password" {
     description = "Enter password for the vm"
-    default = "letmein123"
+    default = "Letmein123@"
 }
 
 variable "numbervm" {

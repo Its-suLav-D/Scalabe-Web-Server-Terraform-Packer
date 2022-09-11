@@ -134,14 +134,24 @@ Instructions 1 and 2 are pretty easy so let's begin working from the third instr
 
   Once you are done with this step. It should save a plan in your directory
 
-  ```
-  # Good Job Final Step. Apply the infrastructure
+  > Note: If you get error like resource group already exists import the existing error. Try the following command. This will copy your template and update main.tf.
 
-  terraform apply
-  ```
+```
+ terraform import azurerm_resource_group.main /subscriptions/<SubscriptionID>/resourceGroups/Azuredevops
+```
 
-  You should see a prompt something like this. Type Yes and you'r done. Kudos ✌️
-  ![Plan](./images/terraform-apply.png)
+Final Push We got this ✌️
+
+```
+# Good Job Final Step. Apply the infrastructure
+
+terraform apply <filename>
+```
+
+You should see a prompt something like this. Type Yes and you'r done. Kudos ✌️
+![Plan](./images/terraform-apply.png)
+
+![Applied](./applied.png)
 
 ### Output
 
@@ -156,3 +166,19 @@ Once you are done with everything. Terrform Should create a scalable Web Server 
 7. Availability Set
 8. Virutal Machine
 9. Disks
+
+![Final](./final_output.png)
+
+🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉
+
+You're officially done. Final Notes don't forget to destroy it else you might have to pay for those resources.
+
+```
+terraform destroy
+```
+
+## Customized Variable.tf
+
+If you are interested in customizing variables file so it can prompt the user. You can follow the attached resource.
+
+[Configure Vars.tf](https://learn.hashicorp.com/tutorials/terraform/variables)
