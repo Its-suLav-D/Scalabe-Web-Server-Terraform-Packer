@@ -12,7 +12,7 @@ provider "azurerm" {
 } 
 
 resource "azurerm_resource_group" "main" {
-    name = "Azuredevops"
+    name = "${var.rgn}"
     location = var.location
 
     tags = {
@@ -141,6 +141,11 @@ resource "azurerm_availability_set" "avset" {
   }
 }
 
+data "azurerm_image" "image" {
+  name                =  "myPackerImage" 
+  resource_group_name = azurerm_resource_group.main.name
+}
+
 
 resource "azurerm_linux_virtual_machine" "main" {
     count = var.numbervm 
@@ -155,12 +160,7 @@ resource "azurerm_linux_virtual_machine" "main" {
         azurerm_network_interface.main.id, 
     ]
 
-    source_image_reference {
-    publisher = "Canonical"
-    offer     = "UbuntuServer"
-    sku       = "18.04-LTS"
-    version   = "latest"
-  }
+    source_image_id = data.azurerm_image.image.id
 
   os_disk {
     storage_account_type = "Standard_LRS"

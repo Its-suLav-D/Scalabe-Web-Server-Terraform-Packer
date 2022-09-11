@@ -1,6 +1,6 @@
 variable "rgn" {
     description = "Resource Group for Virtual Machine"
-    default = "udacity-capstone"
+    default = "Azuredevops"
 }
 
 
